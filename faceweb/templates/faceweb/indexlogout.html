@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>License Plate Detection</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>License Plate Logout Detection</h1>
+    <img src="{% url 'video_feed1' %}" width="640" height="480" id="video_feed1">
+    <br>
+    
+    <form id="snapshotForm" method="post" action="{% url 'capture_snapshot_logout' %}">
+        {% csrf_token %}
+        <button type="submit" id="captureButton">Capture Snapshot</button>
+        <button type="button"><a href="{% url 'admin1' %}"><span>Home</span></a></button>
+    </form>
+    <br><br>
+    
+
+    <script>
+
+        $(document).ready(function() {
+            // Test with a console log to check if the script is executing
+            console.log("Document ready, waiting 10 seconds...");
+
+            // Automatically click the "Capture Snapshot" button after 10 seconds
+            setTimeout(function() {
+                console.log("10 seconds passed, clicking Capture Snapshot button...");
+                document.getElementById("captureButton").click();
+            }, 15000); // 10000 milliseconds = 15 seconds
+        });
+        {% comment %} $(document).ready(function() {
+            $('#saveButton').click(function() {
+                $.ajax({
+                    url: '/save_image_to_db/',
+                    type: 'POST',
+                    data: {
+                        image: $('#video_feed')[0].toDataURL()  // Example: capture current video frame and send as base64 string
+                    },
+                    success: function(response) {
+                        alert(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error saving image: ' + xhr.responseText);
+                    }
+                });
+            });
+        }); {% endcomment %}
+       
+    </script>
+</body>
+</html>

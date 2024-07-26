@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code Scanner</title>
+</head>
+<body>
+    <h1>QR Code Scanner</h1>
+    <video id="qr_video" width="640" height="480"></video>
+    <br>
+    <button onclick="scanQR()">Start Scanning</button>
+    <br><br>
+    <canvas id="qrCanvas" style="display: none;"></canvas>
+
+    <script>
+        let video = document.getElementById('qr_video');
+        let canvas = document.getElementById('qrCanvas');
+        let context = canvas.getContext('2d');
+
+        // Get user media and start video stream
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                video.srcObject = stream;
+                video.play();
+            })
+            .catch(function (error) {
+                console.error('Error accessing camera:', error);
+            });
+
+        function scanQR() {
+            // Draw current video frame onto the canvas
+            context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+            // Get image data from canvas
+            let imageData = context.getImageData(0, 0, canvas.width, canvas.height);
+
+            // Send the image data to the server for QR code decoding
+            fetch('/scan_qr_code/', {
+                method: 'POST',
+                body: imageData
+            })
+            .then(response => response.json())
+            .then(qrData => {
+                alert('QR Code Data: ' + qrData.qr_data);
+                // Close the QR code scanner window after scanning
+                window.close();
+            })
+            .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+</html>

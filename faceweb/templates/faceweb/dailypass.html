@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Daily Pass</title>
+    <style>
+        body {
+            background-color: black;
+            font-family: 'Roboto', sans-serif;
+        }
+        .signup-box {
+            width: 360px;
+            height: 620px;
+            margin: auto;
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 20px;
+        }
+        h1 {
+            text-align: center;
+            padding-top: 15px;
+        }
+        form {
+            width: 300px;
+            margin-left: 20px;
+        }
+        form label {
+            display: flex;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        form input, form select {
+            width: 100%;
+            padding: 7px;
+            border: 1px solid gray;
+            border-radius: 6px;
+            outline: none;
+        }
+        input[type="submit"] {
+            width: 320px;
+            height: 35px;
+            margin-top: 20px;
+            border: none;
+            background-color: rgb(43, 128, 128);
+            color: black;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        button[type="button"] {
+            width: 320px;
+            height: 35px;
+            margin-top: 10px;
+            border: none;
+            background-color: rgb(43, 128, 128);
+            color: black;
+            font-size: 18px;
+            cursor: pointer;
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-box">
+        <h1>Daily Pass</h1>
+        <form id="customerForm" action="{% url 'generate_qrcode_dailypass' %}" method="POST">
+            {% csrf_token %}
+            <label>Reference Name:</label>
+            <input type="text" placeholder="Enter your name" name="reference_name" required>
+            <label>Company Name:</label>
+            <input type="text" placeholder="Enter company name" name="company" required>
+            {% comment %} <label>Date:</label> {% endcomment %}
+            {% comment %} <input type="date" name="valid_from" required> {% endcomment %}
+            <label for="no of people">Number of People:</label>
+            <select name="num_people" id="num_people" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <button type="submit">Generate Pass</button>
+            <button type="button" ><a href="{% url 'home' %}"><span></span>Home</a></button>
+            <br><br>
+        </form>
+    </div>
+</body>
+</html>
+

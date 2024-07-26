@@ -1,0 +1,9 @@
+<!-- myapp/templates/myapp/base_site.html -->
+{% extends 'admin/base_site.html' %}
+
+{% block content %}
+    <div class="submit-row">
+        <a href="{% url 'admin1' %}" class="button" style="margin-right: 20px;">Home Page</a>
+    </div>
+    {{ block.super }}
+{% endblock %}

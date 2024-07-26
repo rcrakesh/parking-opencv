@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customer Details</title>
+    <style>
+        body {
+            background-color: black;
+            font-family: 'Roboto', sans-serif;
+        }
+        .signup-box {
+            width: 360px;
+            height: 620px;
+            margin: auto;
+            margin-top: 20px;
+            background-color: white;
+            border-radius: 20px;
+        }
+        h1 {
+            text-align: center;
+            padding-top: 15px;
+        }
+        form {
+            width: 300px;
+            margin-left: 20px;
+        }
+        form label {
+            display: flex;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        form input {
+            width: 100%;
+            padding: 7px;
+            border: 1px solid gray;
+            border-radius: 6px;
+            outline: none;
+        }
+        input[type="submit"] {
+            width: 320px;
+            height: 35px;
+            margin-top: 20px;
+            border: none;
+            background-color: rgb(43, 128, 128);
+            color: black;
+            font-size: 18px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="signup-box">
+        <h1>Customer Subscription</h1> 
+        <form id="customerForm" action="{% url 'generate_qrcode' %}" method="POST">
+            {% csrf_token %}
+            <label>First Name</label>
+            <input type="text" placeholder="" name="first_name">
+            {% comment %} <label>Last Name</label>
+            <input type="text" placeholder="" name="last_name"> {% endcomment %}
+            <label>Email</label>
+            <input type="email" placeholder="" name="email">
+            <label>Username</label>
+            <input type="text" placeholder="" name="username">
+            <label>Company Name</label>
+            <input type="text" placeholder="cname" name="cname">
+            <label for="user_id">User ID:</label>
+            <input type="text" id="user_id" name="user_id" required>
+            <button type="submit">Create Subscription</button>
+            <button type="button" ><a href="{% url 'home' %}"><span></span>Home</a></button>
+            <br><br>
+            
+        </form>
+    </div>
+</body>
+</html>

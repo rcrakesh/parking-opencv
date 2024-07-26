@@ -1,0 +1,19 @@
+<!-- upload_vehicle.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vehicle Info</title>
+</head>
+<body>
+    <h2>Upload Vehicle Image</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="id_image">Upload Vehicle Image:</label>
+        {{ form.image }}
+        <button type="submit">Store Vehicle</button>
+    </form>
+</body>
+</html>
+

@@ -1,0 +1,26 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Subscription</title>
+</head>
+<body>
+    <h2>Create Subscription</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="user_id">User ID:</label>
+        <input type="text" id="user_id" name="user_id" required>
+        <button type="submit">Create Subscription</button>
+
+
+
+         {% comment %} <img src="{% url 'generate_qr_code' %}" alt="QR Code">
+     {% endcomment %}
+    <!-- Provide a link to download the QR code -->
+    {% comment %} <p><a href="{% url 'generate_qr_code' %}" download="qrcode.png">Download QR Code</a></p>  {% endcomment %}
+        
+    </form>
+</body>
+</html>

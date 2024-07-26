@@ -1,0 +1,33 @@
+<!-- scan_qr.html -->
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Save Image</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Save Image to MongoDB</h1>
+    
+    <!-- Button to trigger saving image -->
+    <button id="saveButton">Save Image</button>
+
+    <script>
+        // Function to send GET request when 's' key is pressed
+        $(document).keydown(function(event) {
+            if (event.key === 's') {
+                $.ajax({
+                    url: '/save_image/',
+                    type: 'GET',
+                    success: function(response) {
+                        alert(response.message);
+                    },
+                    error: function(xhr, status, error) {
+                        alert('Error saving image: ' + xhr.responseText);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

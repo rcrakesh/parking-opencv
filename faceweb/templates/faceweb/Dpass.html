@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Pass</title>
+</head>
+<body>
+    <h1>Daily Pass</h1>
+    <div>
+        <img src="{% url 'video_feed3' %}" width="640" height="480" id="video_feed3">
+    </div>
+    <button type="button"><a href="{% url 'admin1' %}"><span>Home</span></a></button>
+    <!-- Optional: JavaScript to refresh the image periodically -->
+    <script>
+        function refreshImage() {
+            var img = document.getElementById('video_feed3');
+            img.src = img.src + '?' + new Date().getTime(); // Add timestamp to URL to force refresh
+        }
+
+        setInterval(refreshImage, 1000); // Adjust the interval as needed
+    </script>
+</body>
+</html>

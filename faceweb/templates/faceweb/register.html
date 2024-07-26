@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<head>
+    <title>Login</title>
+<style>
+    body{
+        background-color: black;
+        font-family: 'Roboto',sans-serif;
+    }
+    .signup-box{
+        width: 360px;
+        height: 620px;
+        margin: auto;
+        margin-top: 20px;
+        background-color: white;
+        border-radius: 20px;
+    }
+    h1{
+        text-align: center;
+        padding-top:15px;
+    }
+    form{
+        width: 300px;
+        margin-left: 20px;
+    }
+    form label{
+        display: flex;
+        margin-top: 20px;
+        font-size: 18px;
+        }
+    form input{
+        width: 100%;
+        padding: 7px;
+        border: none;
+        border: 1px solid gray;
+        border-radius: 6px;
+        outline: none;
+    }
+    input[type="button"]{
+        width: 320px;
+        height: 35px;
+        margin-top: 20px;
+        border: none;
+        background-color: rgb(43, 128, 128);
+        color:black;
+        font-size: 18px;
+    }
+    p{
+        text-align: center;
+        padding-top: 20px;
+        font-size: 15px;
+
+    }
+    .para2{
+        text-align: center;
+        color: rgb(9, 9, 9);
+        font-size: 15px;
+        margin-top: -10px;
+    }
+    .para2 a{
+        color:blue;
+    }
+    
+</style>
+</head>
+<body>
+    <div class="signup-box">
+        <h1>Register</h1>
+        <form action="{% url 'register' %}" method="POST">
+            {% csrf_token %}
+            <label>First Name</label>
+            <input type="text" placeholder=""  name="first_name">
+            <label>Last Name</label>
+            <input type="text" placeholder="" name="last_name">
+            <label>Email</label>
+            <input type="email" placeholder="" name="email">
+            <label>username</label>
+            <input type="text" placeholder="" name="username">
+            <label>Password</label>
+            <input type="password" placeholder="password" name="password1">
+            <label> confirm Password</label>
+            <input type="password" placeholder="confirm password" name="password2">
+            <br><br>
+           
+            <input type="submit" value="Submit">
+            <button type="button" ><a href="{% url 'home' %}"><span></span>Home</a></button>
+            <button type="button" ><a href="{% url 'login' %}"><span></span>Login</a></button>
+        </form>
+        <p>By clicking signup button, you agree to our terms and codition<br>
+            <a href="#">Terms and Condition</a> and <a href="#">Policy Privacy</a>
+        </p>
+    </div>
+    
+    </body>
+    

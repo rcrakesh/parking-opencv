@@ -1,0 +1,25 @@
+<!-- qr_code.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QR Code</title>
+</head>
+<body>
+    <h1>QR Code</h1>
+    <img src="{% url 'generate_qr_code' %}" alt="QR Code">
+    <br><br>
+    <button id="downloadBtn">Download QR Code</button>
+
+    <script>
+        document.getElementById('downloadBtn').addEventListener('click', function() {
+            var link = document.createElement('a');
+            link.href = '{% url 'generate_qr_code' %}';
+            link.download = 'qr_code.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    </script>
+</body>
+</html>
