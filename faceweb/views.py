@@ -220,7 +220,7 @@ def capture_snapshot(request):# taking a picture of vehicle numberplate
         else:
             message = 'Failed to capture snapshot.'
 
-    return render(request, 'indexlogout.html', {'message': message})
+    return render(request, 'index.html', {'message': message})
 
 
 

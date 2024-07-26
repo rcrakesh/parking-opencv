@@ -15,6 +15,15 @@
         <button type="submit" id="captureButton">Capture Snapshot</button>
         <button type="button"><a href="{% url 'admin1' %}"><span>Home</span></a></button>
     </form>
+    {% if message %}
+    <div id="message" style="margin-top: 20px; padding: 10px; border: 1px solid #ccc;">
+        <p>{{ message }}</p>
+    </div>
+    {% endif %}
+
+<br><br>
+
+
     <br><br>
     
 
